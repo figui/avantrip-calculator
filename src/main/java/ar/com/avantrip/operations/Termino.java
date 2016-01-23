@@ -1,4 +1,4 @@
-package ar.com.avantrip.mathElements;
+package ar.com.avantrip.operations;
 
 
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Representa a un Termino dentro de una operacion matematica, la relacion es de 1 OperacionMatematica, muchos Terminos
  */
-public class Termino implements Calculable {
+public class Termino extends OperacionMatematica {
 
     private int tipo;
     private List<OperacionTermino> operaciones;

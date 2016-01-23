@@ -1,4 +1,4 @@
-package ar.com.avantrip.mathElements;
+package ar.com.avantrip.operations;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -6,12 +6,13 @@ import java.util.List;
 /**
  * Representa a las operaciones dentro de un termino (generalmente son divisiones y multiplicaciones)
  */
-public class OperacionTermino implements Calculable {
+public class OperacionTermino extends Termino{
 
     private int tipo;
     private double valor;
 
     public OperacionTermino(int tipo, double valor) {
+        super(tipo);
         this.tipo = tipo;
         this.valor = valor;
     }

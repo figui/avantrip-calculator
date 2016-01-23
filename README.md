@@ -15,15 +15,15 @@ Para poder crear una operacion matematica hay que instanciar una clase "Operacio
 OperacionMatematica o = new OperacionMatematica(); <br />
 o.comenzar(5).por(3).mas(2).dividido(8) <br /> <br />
 
-o mismo <br />
+// o mismo <br />
 
 OperacionMatematica o = new OperacionMatematica(); <br /> 
-OperacionMatematica o2 = new OperacionMatematica()M <br /><br />
+OperacionMatematica o2 = new OperacionMatematica(); <br /><br />
 
 o2.comenzar(2).dividido(8); <br />
-o.comenzar(5).por(3).mas(o2) <br /> <br />
+o.comenzar(5).por(3).mas(o2); <br /> <br />
 
-Luego para obtener el resultado de la operacion hay que llamar al metodo igual() de la operacion: <br /><br />
+// Luego para obtener el resultado de la operacion hay que llamar al metodo igual() de la operacion: <br /><br />
 
 System.out.println(o.igual());
 

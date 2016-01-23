@@ -1,6 +1,5 @@
 package ar.com.avantrip.operations;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class OperacionMatematica implements Calculable {
 
 
     /**
-     * Metodo de suma, arroja IllegalArgumentException si la operacion no comenzó con el metodo "comenzar()"
+     * Metodo de suma, arroja IllegalArgumentException si la operacion no comenzï¿½ con el metodo "comenzar()"
      * @param n
      * @return
      */
@@ -54,7 +53,7 @@ public class OperacionMatematica implements Calculable {
     }
 
     /**
-     * * Metodo de resta, arroja IllegalArgumentException si la operacion no comenzó con el metodo "comenzar()"
+     * * Metodo de resta, arroja IllegalArgumentException si la operacion no comenzï¿½ con el metodo "comenzar()"
      * @param n
      * @return
      */

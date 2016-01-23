@@ -1,7 +1,6 @@
 package ar.com.avantrip.operations;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
 /**
  * Representa a las operaciones dentro de un termino (generalmente son divisiones y multiplicaciones)

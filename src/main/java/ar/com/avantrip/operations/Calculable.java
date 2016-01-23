@@ -12,5 +12,5 @@ public interface Calculable {
     int PRIMER_TERMINO = 4;
     int PRIMER_OPERACION = 5;
 
-    Double resolver();
+    Double resolver(Double parcial);
 }

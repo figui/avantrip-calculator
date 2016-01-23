@@ -8,29 +8,19 @@ import java.util.List;
  */
 public class OperacionTermino extends Termino{
 
-    private int tipo;
-    private double valor;
+    private Double valor;
 
-    public OperacionTermino(int tipo, double valor) {
-        super(tipo);
-        this.tipo = tipo;
-        this.valor = valor;
+    public OperacionTermino(Number valor) {
+        this.valor = valor.doubleValue();
     }
 
-    public Double resolver() {
+    @Override
+    public Double resolver(Double parcial) {
         return valor;
     }
 
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getValor() {
-        return valor;
+    public Double getValor() {
+        return valor.doubleValue();
     }
 
     public void setValor(double valor) {
@@ -40,13 +30,7 @@ public class OperacionTermino extends Termino{
     @Override
     public String toString() {
         DecimalFormat format = new DecimalFormat("0.#");
-        if(tipo == Calculable.PRIMER_OPERACION) {
-            return format.format(valor).concat(" ");
-        } else if(tipo == Calculable.MULTIPLICADO) {
-            return "* ".concat(format.format(valor));
-        } else {
-            return "/ ".concat(format.format(valor));
-        }
+        return format.format(valor);
 
     }
 }

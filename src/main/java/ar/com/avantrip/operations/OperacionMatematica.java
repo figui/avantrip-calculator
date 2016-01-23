@@ -10,38 +10,34 @@ import java.util.List;
 public class OperacionMatematica implements Calculable {
 
     private List<Termino> terminos;
-    private DecimalFormat format;
 
     public OperacionMatematica() {
         this.terminos = new ArrayList<Termino>();
-        this.format = new DecimalFormat("0.#");
     }
 
     /**
      * Implemetacion de Calculable
      * @return
      */
-    public Double resolver() {
-        Double result = 0d;
+    @Override
+    public Double resolver(Double parcial) {
         for(Termino termino : terminos) {
-            if(termino.getTipo() == Termino.PRIMER_TERMINO ||termino.getTipo() == Calculable.SUMA) {
-                result += termino.resolver();
-            } else if(termino.getTipo() == Calculable.RESTA) {
-                result -= termino.resolver();
-            }
+            parcial = termino.resolver(parcial);
         }
-        return result;
+        return parcial;
     }
+
+
 
     /**
      * Metodo de suma, arroja IllegalArgumentException si la operacion no comenzó con el metodo "comenzar()"
      * @param n
      * @return
      */
-    public OperacionMatematica mas(double n) {
+    public OperacionMatematica mas(Number n) {
         if(terminos.isEmpty()) { throw new IllegalArgumentException("Las operaciones matematicas deben empezar con el metodo \"comenzar()\""); }
-        Termino t = new Termino(Calculable.SUMA);
-        OperacionTermino o = new OperacionTermino(Calculable.PRIMER_OPERACION, n);
+        Termino t = new TerminoSuma();
+        OperacionTermino o = new OperacionTermino(n);
         t.getOperaciones().add(o);
         terminos.add(t);
         return this;
@@ -62,10 +58,10 @@ public class OperacionMatematica implements Calculable {
      * @param n
      * @return
      */
-    public OperacionMatematica menos(double n){
+    public OperacionMatematica menos(Number n){
         if(terminos.isEmpty()) { throw new IllegalArgumentException("Las operaciones matematicas deben empezar con el metodo \"comenzar()\""); }
-        Termino t = new Termino(Calculable.RESTA);
-        OperacionTermino o = new OperacionTermino(Calculable.PRIMER_OPERACION, n);
+        Termino t = new TerminoResta();
+        OperacionTermino o = new OperacionTermino(n);
         t.getOperaciones().add(o);
         terminos.add(t);
         return this;
@@ -86,9 +82,9 @@ public class OperacionMatematica implements Calculable {
      * @param d
      * @return
      */
-    public OperacionMatematica dividido(double d) {
-        if(d == 0) { throw new IllegalArgumentException("No se puede hacer divisiones por 0"); }
-        OperacionTermino o = new OperacionTermino(Calculable.DIVIDIDO, d);
+    public OperacionMatematica dividido(Number d) {
+        if(d.doubleValue() == 0) { throw new IllegalArgumentException("No se puede hacer divisiones por 0"); }
+        OperacionTermino o = new OperacionTerminoDivision(d);
         terminos.get(terminos.size() - 1).getOperaciones().add(o);
         return this;
     }
@@ -108,8 +104,8 @@ public class OperacionMatematica implements Calculable {
      * @param d
      * @return
      */
-    public OperacionMatematica por(double d) {
-        OperacionTermino o = new OperacionTermino(Calculable.MULTIPLICADO, d);
+    public OperacionMatematica por(Number d) {
+        OperacionTermino o = new OperacionTerminoMultiplicacion(d);
         terminos.get(terminos.size() - 1).getOperaciones().add(o);
         return this;
     }
@@ -129,17 +125,18 @@ public class OperacionMatematica implements Calculable {
      * @param d
      * @return
      */
-    public OperacionMatematica comenzar(double d) {
-        if(!terminos.isEmpty()) { terminos.clear(); } // limpio los terminos por si anteriormente se hizo una cuenta
-        Termino t = new Termino(Termino.PRIMER_TERMINO);
-        OperacionTermino o = new OperacionTermino(Calculable.PRIMER_OPERACION, d);
+    public OperacionMatematica comenzar(Number d) {
+        // limpio los terminos por si anteriormente se hizo una cuenta
+        if(!terminos.isEmpty()) { terminos.clear(); }
+        Termino t = new Termino();
+        OperacionTermino o = new OperacionTermino(d);
         t.getOperaciones().add(o);
         terminos.add(t);
         return this;
     }
 
-    public Double igual() {
-        return resolver();
+    public Number igual() {
+        return resolver(0d);
     }
 
     @Override

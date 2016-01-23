@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Representa a toda la operacion matematica entera
  */
-public class OperacionMatematica implements Calculable {
+public class OperacionMatematica {
 
     private List<Termino> terminos;
 
@@ -15,10 +15,9 @@ public class OperacionMatematica implements Calculable {
     }
 
     /**
-     * Implemetacion de Calculable
+     * Resolver la operacion matematica
      * @return
      */
-    @Override
     public Double resolver(Double parcial) {
         for(Termino termino : terminos) {
             parcial = termino.resolver(parcial);

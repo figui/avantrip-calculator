@@ -1,5 +1,3 @@
-package ar.com.avantrip.test;
-
 import ar.com.avantrip.operations.OperacionMatematica;
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by Snakepit on 22/1/2016.
  */
-public class OperacionesTests {
+public class OperacionesTest {
 
     @Test
     public void suma() {

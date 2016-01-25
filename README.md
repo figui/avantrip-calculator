@@ -27,3 +27,5 @@ o.comenzar(5).por(3).mas(o2); <br /> <br />
 
 System.out.println(o.igual());
 
+Para mas usos del mismo revisar [Test Unitarios!](src/test/java/OperacionesTest.java)
+
